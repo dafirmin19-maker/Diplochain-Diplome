@@ -1,0 +1,41 @@
+name: diplochain_app
+description: "DiploChain – Vérification de diplômes sur blockchain. Interface diplômé sécurisée."
+version: 2.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # QR Code generation
+  qr_flutter: ^4.1.0
+
+  # Icônes Material supplémentaires
+  cupertino_icons: ^1.0.6
+
+  # Validation de formulaires
+  # Persistance locale (session utilisateur)
+  shared_preferences: ^2.2.2
+
+  http: ^1.6.0
+  share_plus: ^12.0.1
+  url_launcher: ^6.3.2
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  # Ajouter une police Google Fonts si disponible offline
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: assets/fonts/Inter-Regular.ttf
+  #       - asset: assets/fonts/Inter-Bold.ttf
+  #         weight: 700
