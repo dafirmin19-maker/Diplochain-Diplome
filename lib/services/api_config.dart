@@ -16,7 +16,8 @@ class ApiConfig {
 
   /// Host public du backend si l'API est hébergée sur Internet.
   /// Exemple : 'diplochain-backend.up.railway.app'
-  static const String _publicHost = 'YOUR_PUBLIC_API_HOST';
+  static const String _publicHost =
+      'diplochain-backend-production.up.railway.app';
 
   /// Mode de connexion actuel.
   /// - [ConnectionMode.emulator] → 10.0.2.2 (émulateur Android standard)
@@ -25,11 +26,14 @@ class ApiConfig {
   /// - [ConnectionMode.public] → backend hébergé sur Internet
   ///
   /// Pour un usage réel après déploiement, sélectionne `public`.
-  static ConnectionMode mode = ConnectionMode.auto;
+  static ConnectionMode mode = ConnectionMode.public;
 
   /// URL de base calculée automatiquement
   static String get baseUrl {
     final host = _resolveHost();
+    if (mode == ConnectionMode.public) {
+      return 'https://$host/api';
+    }
     return 'http://$host:$_port/api';
   }
 

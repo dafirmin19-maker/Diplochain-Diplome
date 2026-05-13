@@ -56,12 +56,12 @@ class DiplomaDetailScreen extends StatelessWidget {
     }
   }
 
-  Future<void> _openVerification(BuildContext context) async {
+  Future<void> _verifierEnLigne(BuildContext context) async {
     final uri = Uri.parse(_verificationUrl);
     final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
     if (!opened && context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Impossible d ouvrir le navigateur.')),
+        const SnackBar(content: Text('Impossible d\'ouvrir le lien')),
       );
     }
   }
@@ -149,7 +149,7 @@ class DiplomaDetailScreen extends StatelessWidget {
             _QrSection(
               diploma: diploma,
               verificationUrl: _verificationUrl,
-              onOpenVerification: () => _openVerification(context),
+              onOpenVerification: () => _verifierEnLigne(context),
               onShareQrCode: () => _shareQrCode(context),
             ),
 
