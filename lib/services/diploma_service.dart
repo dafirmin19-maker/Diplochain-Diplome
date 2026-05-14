@@ -33,10 +33,16 @@ class DiplomaService {
           return items.map((json) => Diploma.fromJson(json)).toList();
         }
       }
-      return _getFallbackDiplomas();
+      if (userId == 'usr_da_firmin') {
+        return _getFallbackDiplomas();
+      }
+      return [];
     } catch (e) {
       debugPrint('[DiplomaService] API indisponible, fallback activé: $e');
-      return _getFallbackDiplomas();
+      if (userId == 'usr_da_firmin') {
+        return _getFallbackDiplomas();
+      }
+      return [];
     }
   }
 
