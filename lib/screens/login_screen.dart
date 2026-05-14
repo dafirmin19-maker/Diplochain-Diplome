@@ -77,8 +77,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // ── Démonstration rapide (dev only) ─────────────────────────────
   void _fillDemo() {
-    _emailController.text = 'demo@example.com';
-    _passwordController.text = 'Demo1234';
+    _emailController.text = 'da.firmin@example.com';
+    _passwordController.text = 'Password123';
   }
 
   @override

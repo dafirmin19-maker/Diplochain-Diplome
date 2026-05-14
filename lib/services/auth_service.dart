@@ -104,7 +104,7 @@ class AuthService extends ChangeNotifier {
 
         if (kDebugMode) {
           // Fallback uniquement pour les credentials de démo spécifiques
-          if (email == 'demo@example.com' && password == 'Demo1234') {
+          if (email == 'da.firmin@example.com' && password == 'Password123') {
             return _loginFallback(email);
           }
         }
@@ -113,7 +113,7 @@ class AuthService extends ChangeNotifier {
         debugPrint('[AuthService] Serveur injoignable: $networkError');
         if (kDebugMode) {
           // Fallback uniquement pour les credentials de démo spécifiques
-          if (email == 'demo@example.com' && password == 'Demo1234') {
+          if (email == 'da.firmin@example.com' && password == 'Password123') {
             return _loginFallback(email);
           }
         }
