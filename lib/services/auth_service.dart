@@ -78,7 +78,7 @@ class AuthService extends ChangeNotifier {
               headers: {'Content-Type': 'application/json'},
               body: json.encode({'email': email, 'password': password}),
             )
-            .timeout(const Duration(seconds: 3));
+            .timeout(const Duration(seconds: 15));
 
         if (response.statusCode == 200) {
           final data = json.decode(response.body);
@@ -184,7 +184,7 @@ class AuthService extends ChangeNotifier {
                 'institution': institution,
               }),
             )
-            .timeout(const Duration(seconds: 3));
+            .timeout(const Duration(seconds: 15));
 
         if (response.statusCode == 200 || response.statusCode == 201) {
           final data = json.decode(response.body);
@@ -291,7 +291,7 @@ class AuthService extends ChangeNotifier {
       debugPrint('[AuthService] GET $url');
       final response = await http
           .get(Uri.parse(url), headers: authorizedHeaders)
-          .timeout(const Duration(seconds: 3));
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);

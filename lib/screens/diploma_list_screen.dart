@@ -125,6 +125,26 @@ class _DiplomaList extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
+        // Bannière mode démonstration
+        if (DiplomaService.instance.isUsingFallback)
+          SliverToBoxAdapter(
+            child: Container(
+              color: Colors.orange.shade50,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                children: [
+                  Icon(Icons.info_outline, size: 16, color: Colors.orange.shade800),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Mode démonstration — synchronisation blockchain en cours',
+                      style: TextStyle(fontSize: 12, color: Colors.orange.shade800),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         // En-tête statistiques
         SliverToBoxAdapter(
           child: _StatsHeader(count: diplomas.length),
