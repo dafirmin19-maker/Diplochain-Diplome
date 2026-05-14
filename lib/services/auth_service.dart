@@ -102,20 +102,16 @@ class AuthService extends ChangeNotifier {
           }
         }
 
-        if (kDebugMode) {
-          // Fallback uniquement pour les credentials de démo spécifiques
-          if (email == 'da.firmin@example.com' && password == 'Password123') {
-            return _loginFallback(email);
-          }
+        // Fallback pour la démo Hackathon (même en release)
+        if (email == 'da.firmin@example.com' && password == 'Password123') {
+          return _loginFallback(email);
         }
         return AuthResult.failure('Email ou mot de passe incorrect.');
       } catch (networkError) {
         debugPrint('[AuthService] Serveur injoignable: $networkError');
-        if (kDebugMode) {
-          // Fallback uniquement pour les credentials de démo spécifiques
-          if (email == 'da.firmin@example.com' && password == 'Password123') {
-            return _loginFallback(email);
-          }
+        // Fallback pour la démo Hackathon (même en release)
+        if (email == 'da.firmin@example.com' && password == 'Password123') {
+          return _loginFallback(email);
         }
         return AuthResult.failure(
           'Impossible de joindre le serveur. Veuillez réessayer plus tard.',
@@ -210,20 +206,7 @@ class AuthService extends ChangeNotifier {
       } catch (networkError) {
         debugPrint(
             '[AuthService] Serveur injoignable pour inscription: $networkError');
-        if (kDebugMode) {
-          return _registerFallback(
-            fullName: fullName,
-            email: email,
-            phone: phone,
-            institution: institution,
-          );
-        }
-        return AuthResult.failure(
-          'Impossible de joindre le serveur. Veuillez réessayer plus tard.',
-        );
-      }
-
-      if (kDebugMode) {
+        // Fallback pour la démo Hackathon (même en release)
         return _registerFallback(
           fullName: fullName,
           email: email,
@@ -231,8 +214,13 @@ class AuthService extends ChangeNotifier {
           institution: institution,
         );
       }
-      return AuthResult.failure(
-        'Impossible de créer le compte. Vérifiez vos informations.',
+
+      // Fallback pour la démo Hackathon (même en release)
+      return _registerFallback(
+        fullName: fullName,
+        email: email,
+        phone: phone,
+        institution: institution,
       );
     } finally {
       _setLoading(false);
